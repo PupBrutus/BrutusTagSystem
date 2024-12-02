@@ -3,6 +3,8 @@ using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
+//Purpose: This script is attached to the TagGroup prefab and is used to manage the position and rotation of the tag group above the owner's head in the world
+
 public class TagGroupScript : UdonSharpBehaviour
 {
     void Start()
