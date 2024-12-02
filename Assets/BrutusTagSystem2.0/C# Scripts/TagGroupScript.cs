@@ -21,7 +21,7 @@ public class TagGroupScript : UdonSharpBehaviour
             Vector3 ownerHeadPosition = ownerPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Head).position;
             Vector3 ownerOriginPosition = ownerPlayer.GetTrackingData(VRCPlayerApi.TrackingDataType.Origin).position;
             Vector3 ownerHeight = ownerHeadPosition - ownerOriginPosition;
-            Vector3 newPosition = ownerHeadPosition + new Vector3(0, ownerHeight.y * 0.06f, 0);
+            Vector3 newPosition = ownerHeadPosition + new Vector3(0, ownerHeight.y * 0.1f, 0);
             transform.position = newPosition;
         }
         //set the rotation of the object to always look at the local player's head if the owner of the object is not the local player
