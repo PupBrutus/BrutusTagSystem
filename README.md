@@ -23,26 +23,38 @@ Before using the Brutus Tag System, ensure that you have the [CyanPlayerObjectPo
 ## Adding New Tags
 
 **Creating your tag**
+
 1. Using the provided TEMPLATE.PSD or any existing tag within the `Assets/BrutusTagSystem2.0/example tags/`, create your new tag image.
+   
 2. When importing the new tag image into your project, ensure the "Texture Type" property is set to Sprite (2D and UI).
 
 **Creating the tag button**
+
 3. Duplicate a tag button from the scene hierarchy (`TagUIManager/UI-Canvas/ViewPort/Content/`) and rename the item to be the next integer available.
+
 4. Update the Source Image of the Image component on your new button to your new tag sprite.
-5. Ensure the Enabled Indicator and PlayerObjectAssigner variables are correctly set on the new button.
+   
+6. Ensure the Enabled Indicator and PlayerObjectAssigner variables are correctly set on the new button.
 
 **Creating the tag object**
+
 6. Right-click the TagDisplay prefab and choose `Prefab/Open Asset In Context`.
-7. Duplicate a tag object from the scene hierarchy (`TagDisplay/TagGroup/LayoutPanel/`) and rename the new object to the same integer value from step 3.
-8. Update the “Source Image” of the Image component on your new tag object to your new tag sprite.
-9. Save the prefab and return to the main scene.
+   
+8. Duplicate a tag object from the scene hierarchy (`TagDisplay/TagGroup/LayoutPanel/`) and rename the new object to the same integer value from step 3.
+   
+9. Update the “Source Image” of the Image component on your new tag object to your new tag sprite.
+    
+10. Save the prefab and return to the main scene.
 
 **Updating components for your new tag**
-10. Select the TagDisplay object in the scene hierarchy and add both the new tagDisplay Object and the new tagButton Object to their appropriate arrays on the main TagDisplay prefab.
-11. Select the "PlayerObjectAssigner" object in the scene hierarchy and select "Respawn All Pool Objects" to populate the object pool with the updated TagDisplay prefabs.
+
+11. Select the TagDisplay object in the scene hierarchy and add both the new tagDisplay Object and the new tagButton Object to their appropriate arrays on the main TagDisplay prefab.
+
+12. Select the "PlayerObjectAssigner" object in the scene hierarchy and select "Respawn All Pool Objects" to populate the object pool with the updated TagDisplay prefabs.
 
 **Wrap-up**
-12. Test your changes.
+13. Test your changes.
+
 
 ## Scripts
 
