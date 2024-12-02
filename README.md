@@ -60,7 +60,7 @@ Before using the Brutus Tag System, ensure that you have the [CyanPlayerObjectPo
 
 ### TagGroupScript
 
-This script is attached to the TagGroup prefab and is used to manage the position and rotation of the tag group above the owner's head in the world.
+This script is attached to the TagGroup prefab and is used to manage the position and rotation of the tag group above the owner's head in the world. This script doesn't interact with any other components. 
 
 ### TagButton
 
@@ -72,9 +72,9 @@ This script is attached to the TagDisplay prefab and is used to update the tag d
 
 ## Interaction between TagButton and TagDisplay
 
-- **TagButton**: When a player interacts with a TagButton, it updates the activeUsers list and serializes this data into a JSON string. This JSON string is then read to all TagDisplay objects when it performs the CallUpdate() function triggering TagUpdate on the TagDisplay objects.
+- **TagButton**: When a player interacts with a TagButton, tagUpdate() updates the activeUsers DataList variable and serializes it into a JSON string so it can be shared between scripts and players. This JSON string is then read by TagDisplay objects after TagButton performs the CallUpdate() function triggering TagUpdate on the TagDisplay objects to display the latest.
 
-- **TagDisplay**: Upon receiving the TagUpdate(int), each TagDisplay object reaches out to the correct button in the TagButtons array by index (tagIndex-1) for the activeUserListJSON, deserializes the data into a data-list and updates the tags displayed above the player's head accordingly if the displayname of the current owner appears in the list.
+- **TagDisplay**: Recieves the a tagUpdate(tagIndex) from TagButton then reaches out to the correct button in the TagButtons array by index (tagIndex-1) for that button's activeUserListJSON, deserializes the data into a data-list and updates the tags displayed above a player's head accordingly if the displayname of the current owner appears in the list.
 
 ## Bugs/Troubleshooting
 
