@@ -1,0 +1,91 @@
+﻿using UdonSharp;
+using UnityEngine;
+using VRC.SDKBase;
+using VRC.Udon;
+using VRC.SDK3.Data;
+using System.Collections.Generic;
+
+[UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
+public class TagUiButton : UdonSharpBehaviour
+{
+    public GameObject enabledIndicator;
+    [UdonSynced] public string activeUsersJson;
+    private DataList activeUsers;
+
+    void Start()
+    {
+        if (activeUsers == null || activeUsers.Count == 0)
+        {
+            activeUsers = new DataList();
+        }
+        // ...existing code...
+    }
+
+    public void tagUpdate()
+    {
+        Networking.SetOwner(Networking.LocalPlayer, this.gameObject);
+        string userName = Networking.LocalPlayer.displayName;
+
+        if (activeUsers.Contains(userName))
+        {
+            activeUsers.Remove(userName);
+            enabledIndicator.SetActive(false);
+        }
+        else
+        {
+            activeUsers.Add(userName);
+            enabledIndicator.SetActive(true);
+        }
+        sendEvent();
+    }
+
+    public void sendEvent()
+    {
+        serializeJSON();
+        RequestSerialization();
+    }
+
+    private void serializeJSON()
+    {
+        if (VRCJson.TrySerializeToJson(activeUsers, JsonExportType.Minify, out DataToken result))
+        {
+            activeUsersJson = result.String;
+            Debug.Log("Serialized activeUsersJson: " + activeUsersJson);
+        }
+        else
+        {
+            Debug.LogError(result.ToString());
+        }
+    }
+
+    public override void OnPreSerialization()
+    {
+        // ...existing code... 
+    }
+
+    public override void OnDeserialization()
+    {
+        if(VRCJson.TryDeserializeFromJson(activeUsersJson, out DataToken result))
+        {
+            activeUsers = result.DataList;
+        }
+        else
+        {
+            Debug.LogError(result.ToString());
+        }
+    }
+
+    public override void OnPlayerLeft(VRCPlayerApi leavingPlayer)
+    {
+        if (Networking.IsMaster)
+        {
+            Networking.SetOwner(Networking.LocalPlayer, this.gameObject);
+            string userName = leavingPlayer.displayName;
+            if (activeUsers.Contains(userName))
+            {
+                activeUsers.Remove(userName);
+                sendEvent();
+            }
+        }
+    }
+}
