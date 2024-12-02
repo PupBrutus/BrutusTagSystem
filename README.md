@@ -21,7 +21,7 @@ Before using the Brutus Tag System, ensure that you have the [CyanPlayerObjectPo
 3. Import the unity package into your project
 4. Drop the `BTS` prefab into your scene hierarchy
 5. Right-click the BTS prefab and choose `Unpack` -- **do not choose `Unpack Completely`, you can optionally also unpack the TagUIManager prefab, but ensure the other prefabs are left as prefabs** 
-6. Review the steps below on Adding New Tags to add/update the tags shown.
+6. Review the steps below on adding new tags to add/update the tags shown.
 
 
 ## Adding New Tags
