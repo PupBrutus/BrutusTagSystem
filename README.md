@@ -73,11 +73,11 @@ Before using the Brutus Tag System, ensure that you have the [CyanPlayerObjectPo
 
 ### TagGroupScript
 
-This script is attached to the TagGroup prefab and is used to manage the position and rotation of the tag group above the owner's head in the world. This script doesn't interact with any other components. 
+This script is attached to the TagGroup prefab and is used to manage the position and rotation of the tag group above the owner's head in the world. The value of the offset the tags are displayed above the player's head can be adjusted in the code, currently this is set dynamically per player 115% of their avatar height. This script doesn't interact with any other components. 
 
 ### TagButton
 
-This script is attached to the TagButton prefab and is used to manage the tag button interactivity, manage which players have the tag selected, and handle data serialization.
+This script is attached to the TagButton prefab and is used to manage the tag button interactivity, manage which players have the tag selected via DataList and a converted JSON string, and handles data serialization/late join logic/player left logic etc.
 
 ### TagDisplay
 
@@ -98,3 +98,8 @@ This script is attached to the TagDisplay prefab and is used to update the tag d
 - I've included a number of commented out debugging logging statements which you may want to uncomment if you're developing/debugging this asset.
 - **TagDisplay Arrays** Ensure that the TagObjects array and the TagButtons array appear in the same order for both arrays or there will be a mismatch between which tag is selected vs displayed.
 - **TagButton PlayerObjectAssigner** Ensure that the PlayerObjectAssigner variable on the TagButton objects is assigned to the gameobject which acts as a parent to all pooled objects that will be updated when TagUpdate is called.
+
+
+## To do
+
+- Migrate away from using CyanTriggerObjectPool for the new [VRChat persistence/player object tools](https://creators.vrchat.com/worlds/udon/persistence/player-object)
