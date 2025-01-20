@@ -70,3 +70,16 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+/Assets/Examples.meta
+/Assets/Examples
+/Assets/Examples/*
+Assets/TextMesh Pro.meta
+/Assets/TextMesh Pro
+/Assets/SerializedUdonPrograms
+/Assets/SerializedUdonPrograms
+/Assets/UdonSharp
+*.asset
+ClientSimStorage/PlayerData/PlayerData_1_TagSetupScene.json
+ClientSimStorage/PlayerObjects/PlayerObject_1_TagSetupScene.json
+Assets/BrutusTagSystem/myWorldBpId.txt
+Assets/BrutusTagSystem/myWorldBpId.txt.meta
