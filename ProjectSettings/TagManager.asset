@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - DisableOnBuild
+  - EnableOnBuild
   layers:
   - Default
   - TransparentFX

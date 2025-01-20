@@ -79,3 +79,7 @@ Assets/TextMesh Pro.meta
 /Assets/SerializedUdonPrograms
 /Assets/UdonSharp
 *.asset
+ClientSimStorage/PlayerData/PlayerData_1_TagSetupScene.json
+ClientSimStorage/PlayerObjects/PlayerObject_1_TagSetupScene.json
+Assets/BrutusTagSystem/myWorldBpId.txt
+Assets/BrutusTagSystem/myWorldBpId.txt.meta
