@@ -12,13 +12,13 @@ public class btsUiManager : UdonSharpBehaviour
 
     void Start()
     {
-        Debug.Log("btsUiManager Start: Initializing...");
+        //Debug.Log("btsUiManager Start: Initializing...");
         findLocalPlayerTagDisplay();
     }
 
     private void findLocalPlayerTagDisplay()
     {
-        Debug.Log("findLocalPlayerTagDisplay: Searching for local player tag display...");
+        //Debug.Log("findLocalPlayerTagDisplay: Searching for local player tag display...");
         var objects = Networking.GetPlayerObjects(Networking.LocalPlayer);
 
         if (objects == null || objects.Length == 0)
@@ -29,13 +29,13 @@ public class btsUiManager : UdonSharpBehaviour
 
         foreach (var obj in objects)
         {
-            Debug.Log($"findLocalPlayerTagDisplay: Checking object {obj.name}...");
+            //Debug.Log($"findLocalPlayerTagDisplay: Checking object {obj.name}...");
             if (obj.name.StartsWith("btsTagDisplay"))
             {  
                 localPlayerTagDisplay = (UdonBehaviour)obj.GetComponent<UdonBehaviour>();
                 if (localPlayerTagDisplay != null)
                 {
-                    Debug.Log("findLocalPlayerTagDisplay: Successfully found and assigned localPlayerTagDisplay.");
+                    //Debug.Log("findLocalPlayerTagDisplay: Successfully found and assigned localPlayerTagDisplay.");
                 }
                 else
                 {

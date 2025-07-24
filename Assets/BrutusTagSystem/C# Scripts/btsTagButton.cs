@@ -34,25 +34,25 @@ public class btsTagButton : UdonSharpBehaviour
     {
         maxTags = btsUiManager.maxTags;
 
-        Debug.Log("Tag count: " + _userTagList.Count + " Max tags: " + maxTags);
+        //Debug.Log("Tag count: " + _userTagList.Count + " Max tags: " + maxTags);
 
         if (_userTagList.Count >= maxTags && !TagCheck())
         {
             buttonActive = false;
             MaxTagsMessage.SetActive(true);
-            Debug.Log("Max tags reached");
+            //Debug.Log("Max tags reached");
         }
         else if (_userTagList.Count >= maxTags && TagCheck())
         {
             buttonActive = true;
             MaxTagsMessage.SetActive(true);
-            Debug.Log("Max tags reached, but tag is already added");
+            //Debug.Log("Max tags reached, but tag is already added");
         }
         else
         {
             buttonActive = true;
             MaxTagsMessage.SetActive(false);
-            Debug.Log("Max tags not reached");
+            //Debug.Log("Max tags not reached");
         }
     }
 
@@ -81,7 +81,7 @@ public class btsTagButton : UdonSharpBehaviour
         {
             _userTagList.Remove(gameObject.name);
             enabledIndicator.SetActive(false);
-            Debug.Log("Removed " + gameObject.name + " from _userTagList");
+            //Debug.Log("Removed " + gameObject.name + " from _userTagList");
 
         }
         else
@@ -90,11 +90,11 @@ public class btsTagButton : UdonSharpBehaviour
             {
                 _userTagList.Add(gameObject.name);
                 enabledIndicator.SetActive(true);
-                Debug.Log("Added " + gameObject.name + " to _userTagList");
+                //Debug.Log("Added " + gameObject.name + " to _userTagList");
             }
             else
             {
-                Debug.Log("Max tags reached, cannot add " + gameObject.name);
+                //Debug.Log("Max tags reached, cannot add " + gameObject.name);
             }
         }
         seralizePlayerData();
@@ -109,7 +109,7 @@ public class btsTagButton : UdonSharpBehaviour
             btsTagDisplay.SetProgramVariable("_playerTagString", _tempPlayerTagString); // Correct variable name
             btsTagDisplay.SendCustomEvent("deserializePlayerData"); // Ensure the display updates
 
-            Debug.Log("Set playerTagString " + _tempPlayerTagString);
+            //Debug.Log("Set playerTagString " + _tempPlayerTagString);
         }
         else
         {
@@ -122,7 +122,7 @@ public class btsTagButton : UdonSharpBehaviour
     {  
         btsTagDisplay = btsUiManager.localPlayerTagDisplay;
 
-        Debug.Log("Deserializing player data from" + btsTagDisplay.name);
+        //Debug.Log("Deserializing player data from" + btsTagDisplay.name);
 
         _tempPlayerTagString = (string)btsTagDisplay.GetProgramVariable("_playerTagString");
 
@@ -138,7 +138,7 @@ public class btsTagButton : UdonSharpBehaviour
             else if (_tempToken.TokenType == TokenType.DataList)
             {
                 _userTagList = _tempToken.DataList;
-                Debug.Log("Deserialized _playerTagString");
+                //Debug.Log("Deserialized _playerTagString");
                 MaxTagsCheck();
                 return;
             }

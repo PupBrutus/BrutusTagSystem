@@ -12,10 +12,10 @@ public class btsSlider : UdonSharpBehaviour
 
     void Start()
     {
-        Debug.Log("btsSlider script started");
+        //Debug.Log("btsSlider script started");
         if (btsHeightSlider != null)
         {
-            Debug.Log("btsHeightSlider is assigned");
+           //Debug.Log("btsHeightSlider is assigned");
         }
         else
         {
@@ -36,16 +36,16 @@ public class btsSlider : UdonSharpBehaviour
 
     public void sliderUpdate()
     {
-        Debug.Log("sliderUpdate method called");
+        //Debug.Log("sliderUpdate method called");
         
         btsTagDisplay = btsUiManager.localPlayerTagDisplay;
-        Debug.Log("btsTagDisplay object found: " + (btsTagDisplay != null));
+        //Debug.Log("btsTagDisplay object found: " + (btsTagDisplay != null));
 
         Networking.SetOwner(Networking.LocalPlayer, gameObject);
         float sliderValue = btsHeightSlider.value;
         //Debug.Log("Slider value: " + sliderValue);
         
         btsTagDisplay.SetProgramVariable("_playerHeightOffset", sliderValue);
-        Debug.Log("_playerHeightOffset set to: " + sliderValue);
+        //Debug.Log("_playerHeightOffset set to: " + sliderValue);
     }
 }

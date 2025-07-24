@@ -20,7 +20,7 @@ public class btsTagDisplay : UdonSharpBehaviour
         {
             if (_playerTagString != value)
             {
-                Debug.Log("playerTagString changed to: " + value);
+                //Debug.Log("playerTagString changed to: " + value);
                 _playerTagString = value;
                 deserializePlayerData();
             }
@@ -34,7 +34,7 @@ public class btsTagDisplay : UdonSharpBehaviour
         {
             if (_playerHeightOffset != value)
             {
-                Debug.Log("playerHeightOffset changed to: " + value);
+                //Debug.Log("playerHeightOffset changed to: " + value);
                 _playerHeightOffset = value;
                 RequestSerialization();
             }
@@ -75,7 +75,7 @@ public class btsTagDisplay : UdonSharpBehaviour
         Vector3 LocalHeight = LocalHeadPosition - LocalOriginPosition;
         
         localPlayerViewOffset = LocalHeight.y/10;
-        Debug.Log("localPlayerViewOffset: " + localPlayerViewOffset);
+        //Debug.Log("localPlayerViewOffset: " + localPlayerViewOffset);
 
     }
 
@@ -94,7 +94,7 @@ public class btsTagDisplay : UdonSharpBehaviour
             else if (_tempToken.TokenType == TokenType.DataList)
             {
                 _userTagList = _tempToken.DataList;
-                Debug.Log("Deserialized playerTagString: " + _playerTagString);
+                //Debug.Log("Deserialized playerTagString: " + _playerTagString);
                 active = true;
                 TagUpdate();
                 return;
@@ -119,7 +119,7 @@ public class btsTagDisplay : UdonSharpBehaviour
     private void ResetTagList()
     {
         _userTagList = new DataList();
-        Debug.Log("Created new _userTagList");
+        //Debug.Log("Created new _userTagList");
 
         if (VRCJson.TrySerializeToJson(_userTagList, JsonExportType.Minify, out DataToken result))
         {
@@ -135,7 +135,7 @@ public class btsTagDisplay : UdonSharpBehaviour
 
     private void TagUpdate()
     {
-        Debug.Log("Running TagUpdate");
+        //Debug.Log("Running TagUpdate");
 
         // Destroy current active tags
         if (_activeTags != null)
@@ -165,7 +165,7 @@ public class btsTagDisplay : UdonSharpBehaviour
                 newTagObject.name = tagName.String;
                 newTagObject.SetActive(true);
                 _activeTags[i] = newTagObject;
-                Debug.Log("Instantiated and activated tag: " + tagName.String);
+                //Debug.Log("Instantiated and activated tag: " + tagName.String);
             }
             else
             {
