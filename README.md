@@ -11,17 +11,13 @@ Big thank you to [PlayerBush001](https://www.youtube.com/@PlayerBush001) for the
 
 ## Installation
 
-### Requirements
-
-Before using the Brutus Tag System, ensure that you have the [CyanPlayerObjectPool](https://github.com/CyanLaser/CyanPlayerObjectPool) installed in your VRC World.
 
 ### Installation Steps
-1. Follow the installation steps for CyanLaser's CyanPlayerObjectPool and it's necessary prerequisites
-2. Download the latest unitypackage from the releases page https://github.com/PupBrutus/BrutusTagSystem/releases
-3. Import the unity package into your project
-4. Drop the `BTS` prefab into your scene hierarchy
-5. Right-click the BTS prefab and choose `Unpack` -- **do not choose `Unpack Completely`, you can optionally also unpack the TagUIManager prefab, but ensure the other prefabs are left as prefabs** 
-6. Review the steps below on adding new tags to add/update the tags shown.
+1. Download the latest unitypackage from the releases page https://github.com/PupBrutus/BrutusTagSystem/releases
+2. Import the unity package into your project
+3. Drop the `BTS` prefab into your scene hierarchy
+4. Right-click the BTS prefab and choose `Unpack` -- **do not choose `Unpack Completely`, you can optionally also unpack the TagUIManager prefab, but ensure the other prefabs are left as prefabs** 
+5. Review the steps below on adding new tags to add/update the tags shown.
 
 
 ## Adding New Tags
