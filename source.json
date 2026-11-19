@@ -12,5 +12,12 @@
     "text": "View on GitHub"
   },
   "githubRepos": [],
-  "packages": []
+  "packages": [
+    {
+      "name": "com.pupbrutus.brutustagsystem",
+      "releases": [
+        "https://github.com/PupBrutus/BrutusTagSystem/releases/download/3.0.0/com.pupbrutus.brutustagsystem-3.0.0.zip"
+      ]
+    }
+  ]
 }
