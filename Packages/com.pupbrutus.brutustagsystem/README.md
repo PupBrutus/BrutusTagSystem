@@ -41,13 +41,25 @@ Out of the box BTS shows the 31 example tags. To use your own, see [Your own tag
 
 Tags are drawn as plain meshes that share one atlas texture and one material, not as UI Canvases (see [Performance](#performance)). The baker builds them from a **tag config**: a list of tag images in tag-id order.
 
-1. Make each tag image from `Tag Template/TEMPLATE.psd` or an image in `Example Tags/`. Import it with **Texture Type: Sprite (2D and UI)**. Keep your images under `Assets/`, never in the package folder, which updates replace.
-2. Run **Tools > Brutus Tag System > Bake Tag Meshes** with your scene open. The first time, choose **Create my config**: this copies the example config to `Assets/BrutusTagSystem Tags/TagBakeConfig.asset` and bakes it. Your baked atlas, material and meshes go into `Assets/BrutusTagSystem Tags/Baked/`.
-3. Select your `TagBakeConfig` and **append** your sprites to *Tag Sprites*. To start from your own set instead of the examples, replace the entries before any player has saved tags; after launch, only append.
+1. Make each tag image from `Tag Template/TEMPLATE.psd` or an image in `Example Tags/`. Import it with **Texture Type: Sprite (2D and UI)**. Keep your images anywhere under `Assets/`, never in the package folder, which updates replace.
+2. Run **Tools > Brutus Tag System > Bake Tag Meshes** with your scene open. The first time, choose **Create my config**: this copies the example config to `Assets/BrutusTagSystem Tags/TagBakeConfig.asset` and bakes it. Your baked atlas, material and meshes go into `Assets/BrutusTagSystem Tags/Baked/`. To keep them somewhere else, see [Where your tag files live](#where-your-tag-files-live).
+3. Select your `TagBakeConfig` and **append** your sprites to *Tag Sprites*. To add several at once, select them in the Project window and drag them onto the *Tag Sprites* name in the Inspector; then check the order they landed in, because each entry's position is its tag id. To start from your own set instead of the examples, replace the entries before any player has saved tags; after launch, only append.
 4. For each new tag, duplicate a button under `TagUIManager/UI-Canvas/ViewPort/Content/`, rename it to the tag's id (its position in the config, from 0), and set its Image's *Source Image* to the tag sprite. Check its `btsUiManager`, `enabledIndicator` and `MaxTagsMessage` references.
 5. Bake again, then save the scene.
 
-The bake rebuilds `btsTagSourceMesh` (inactive templates, one per tag) next to `btsTagDisplay`, links them and each tag's height to `btsTagDisplay`, and points every button that shows a tag image at its atlas sprite, so the original images stay out of the world build. Keep one `TagBakeConfig` under `Assets/`; the baker uses whichever one it finds there, wherever it is. `Max Tags` on `TagUIManager` (default 5) caps how many tags a player can wear.
+The bake rebuilds `btsTagSourceMesh` (inactive templates, one per tag) next to `btsTagDisplay`, links them and each tag's height to `btsTagDisplay`, and points every button that shows a tag image at its atlas sprite, so the original images stay out of the world build. `Max Tags` on `TagUIManager` (default 5) caps how many tags a player can wear.
+
+### Where your tag files live
+
+There are no folder settings: the location of your `TagBakeConfig` decides where the bake goes.
+
+| What | Where | To change it |
+|---|---|---|
+| Tag images | Anywhere under `Assets/`. The config lists the sprites themselves, not a folder | Move or rename them freely in the Project window; the config keeps pointing at them |
+| `TagBakeConfig` | `Assets/BrutusTagSystem Tags/` after *Create my config* | Move or rename it in the Project window, or create one wherever you like (right-click > Create > Brutus Tag System > Tag Bake Config). Keep exactly one under `Assets/`: the baker finds it by type, wherever it is |
+| Baked atlas, material and meshes | A `Baked` folder next to the config | Move the config, then bake again. The bake writes a new `Baked` folder there and links the scene to it; delete the old `Baked` folder once you've saved the scene |
+
+The config and the original images only matter in the editor. A world build includes only what the scene uses: the baked atlas, material and meshes.
 
 ## Tag visibility
 

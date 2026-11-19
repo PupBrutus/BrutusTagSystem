@@ -1,8 +1,9 @@
 using UnityEngine;
 
 // Editor-only source list for BtsTagMeshBaker: the original tag images, in tag-id order (the number stored in
-// players' saved tag lists). Lives in an Editor folder, so it and the original images stay out of the world build;
-// the build only carries the baked atlas, material and meshes. To add a tag, append its sprite here and re-bake.
+// players' saved tag lists). Keep one under Assets/ (anywhere); the bake goes into a Baked folder next to it. The
+// scene never references the config or the original images, so they stay out of the world build; the build only
+// carries the baked atlas, material and meshes. To add a tag, append its sprite here and re-bake.
 [CreateAssetMenu(menuName = "Brutus Tag System/Tag Bake Config", fileName = "TagBakeConfig")]
 public class BtsTagBakeConfig : ScriptableObject
 {
