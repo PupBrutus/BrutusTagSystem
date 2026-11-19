@@ -1,0 +1,16 @@
+{
+  "name": "Brutus Tag System",
+  "id": "com.pupbrutus.brutustagsystem",
+  "url": "https://pupbrutus.github.io/BrutusTagSystem/index.json",
+  "author": {
+    "name": "Pup Brutus",
+    "url": "https://github.com/PupBrutus"
+  },
+  "description": "A VRChat world prefab: players pick tags from a menu and they show above their heads, saved with VRChat persistence.",
+  "infoLink": {
+    "url": "https://github.com/PupBrutus/BrutusTagSystem",
+    "text": "View on GitHub"
+  },
+  "githubRepos": [],
+  "packages": []
+}
