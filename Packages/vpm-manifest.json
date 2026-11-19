@@ -3,23 +3,22 @@
     "com.vrchat.core.vpm-resolver": {
       "version": "0.1.29"
     },
-    "dev.onevr.vrworldtoolkit": {
-      "version": "3.2.0"
-    },
     "com.cyan.playerobjectpool": {
       "version": "1.1.2"
     },
+    "dev.onevr.vrworldtoolkit": {
+      "version": "3.5.1"
+    },
+    "com.vrchat.base": {
+      "version": "3.10.6"
+    },
     "com.vrchat.worlds": {
-      "version": "3.7.5"
+      "version": "3.10.6"
     }
   },
   "locked": {
     "com.vrchat.core.vpm-resolver": {
       "version": "0.1.29",
-      "dependencies": {}
-    },
-    "dev.onevr.vrworldtoolkit": {
-      "version": "3.2.0",
       "dependencies": {}
     },
     "com.cyan.playerobjectpool": {
@@ -29,15 +28,19 @@
         "com.vrchat.udonsharp": "^1.1.x"
       }
     },
-    "com.vrchat.worlds": {
-      "version": "3.7.5",
-      "dependencies": {
-        "com.vrchat.base": "3.7.5"
-      }
+    "dev.onevr.vrworldtoolkit": {
+      "version": "3.5.1",
+      "dependencies": {}
     },
     "com.vrchat.base": {
-      "version": "3.7.5",
+      "version": "3.10.6",
       "dependencies": {}
+    },
+    "com.vrchat.worlds": {
+      "version": "3.10.6",
+      "dependencies": {
+        "com.vrchat.base": "3.10.6"
+      }
     }
   }
 }
