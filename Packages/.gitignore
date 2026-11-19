@@ -1,2 +1,4 @@
 /*/
 !com.vrchat.core.*/
+# The Brutus Tag System package itself (everything else here is installed by the VCC)
+!/com.pupbrutus.brutustagsystem/
