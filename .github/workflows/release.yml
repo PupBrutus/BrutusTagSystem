@@ -1,7 +1,9 @@
-# Builds a GitHub release with a VCC (VPM) zip and a .unitypackage of Packages/<PACKAGE_NAME>.
+# Builds a GitHub release with a VCC (VPM) zip and a .unitypackage of Packages/<PACKAGE_NAME>, adds the zip to
+# source.json on main, then rebuilds the VCC listing (build-listing.yml).
 # From vrchat-community/template-package (MIT). Setup: Settings > Secrets and variables > Actions > Variables,
-# add PACKAGE_NAME = com.pupbrutus.brutustagsystem. Run it from the Actions tab ("Build Release"); the version and
-# tag come from the package.json "version" field, so bump that (and the CHANGELOG) first.
+# add PACKAGE_NAME = com.pupbrutus.brutustagsystem, and Settings > Pages > Source: GitHub Actions.
+# Run it on main from the Actions tab ("Build Release"); the version and tag come from the package.json "version"
+# field, so bump that (and the CHANGELOG) first. Nothing is bumped automatically.
 name: Build Release
 
 on: 
@@ -16,15 +18,20 @@ jobs:
       config_package: ${{ steps.config_package.outputs.configPackage }}
     steps:
 
-    # Ensure that required repository variable has been created for the Package
+    # Ensure that required repository variable has been created for the Package, and that this runs on main
+    # (the release commits source.json to main). Fails, rather than skipping the build, so a missing setup shows.
     - name: Validate Package Config
       id: config_package
       run: |
-        if [ "${{ vars.PACKAGE_NAME }}" != "" ]; then
-          echo "configPackage=true" >> $GITHUB_OUTPUT;
-        else
-          echo "configPackage=false" >> $GITHUB_OUTPUT;
+        if [ "${{ vars.PACKAGE_NAME }}" = "" ]; then
+          echo "::error::Repository variable PACKAGE_NAME is not set (Settings > Secrets and variables > Actions > Variables)."
+          exit 1
         fi
+        if [ "${{ github.ref }}" != "refs/heads/main" ]; then
+          echo "::error::Run Build Release on main, not ${{ github.ref }}."
+          exit 1
+        fi
+        echo "configPackage=true" >> $GITHUB_OUTPUT
 
   # Build and release the Package
   # If the repository is not configured properly, this job will be skipped
@@ -89,3 +96,28 @@ jobs:
             ${{ env.unityPackage }}
             ${{ env.packagePath }}/package.json
           tag_name: ${{ env.version }}
+
+      # Add the release zip to source.json on main, newest first, so the listing includes it
+      - name: Update source.json
+        run: |
+          releaseUrl="https://github.com/${{ github.repository }}/releases/download/${{ env.version }}/${{ env.zipFile }}"
+          jq --arg name "${{ vars.PACKAGE_NAME }}" --arg url "${releaseUrl}"             '.packages = ((.packages // [])
+              | if any(.[]?; .name == $name)
+                then map(if .name == $name then .releases = ([$url] + ((.releases // []) | map(select(. != $url)))) else . end)
+                else . + [{name: $name, releases: [$url]}] end)'             source.json > source.json.tmp
+          mv source.json.tmp source.json
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add source.json
+          if git diff --cached --quiet; then echo "source.json already lists ${releaseUrl}"; exit 0; fi
+          git commit -m "Listing: add ${{ env.version }}"
+          git push origin HEAD:main
+
+  # Rebuild and publish the VCC listing with the new release
+  build-listing:
+    needs: build
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/build-listing.yml

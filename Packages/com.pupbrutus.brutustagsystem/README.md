@@ -17,7 +17,7 @@ No other packages are needed. (Versions before 2.0 needed CyanPlayerObjectPool; 
 
 Both ways install the same files to `Packages/com.pupbrutus.brutustagsystem`.
 
-**Creator Companion (VCC / ALCOM).** Add the Brutus Tag System listing to the VCC (Settings > Packages > Add Repository), then add *Brutus Tag System* to your project from Manage Project. Updates then show up in the VCC.
+**Creator Companion (VCC / ALCOM).** Open the [listing page](https://pupbrutus.github.io/BrutusTagSystem/) and click **Add to VCC**, or in the VCC go to Settings > Packages > Add Repository and paste `https://pupbrutus.github.io/BrutusTagSystem/index.json`. Then add *Brutus Tag System* to your project from Manage Project. Updates then show up in the VCC.
 
 **.unitypackage.** Download `com.pupbrutus.brutustagsystem-<version>.unitypackage` from the [releases page](https://github.com/PupBrutus/BrutusTagSystem/releases) and import it (Assets > Import Package > Custom Package). To update, import the newer one.
 
