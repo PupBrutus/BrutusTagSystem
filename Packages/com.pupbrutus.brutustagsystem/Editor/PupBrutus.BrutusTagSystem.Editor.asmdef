@@ -1,0 +1,22 @@
+{
+    "name": "PupBrutus.BrutusTagSystem.Editor",
+    "rootNamespace": "",
+    "references": [
+        "PupBrutus.BrutusTagSystem",
+        "VRC.Udon",
+        "UdonSharp.Runtime",
+        "UdonSharp.Editor",
+        "UnityEngine.UI"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

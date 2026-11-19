@@ -1,0 +1,24 @@
+{
+  "name": "com.pupbrutus.brutustagsystem",
+  "displayName": "Brutus Tag System",
+  "version": "3.0.0",
+  "unity": "2022.3",
+  "description": "Player-selectable tags (pronouns, interests, ice-breakers) shown above players' heads in a VRChat world. Saved per player with VRChat persistence; drawn as baked mesh tags sharing one atlas and material.",
+  "author": {
+    "name": "Pup Brutus",
+    "url": "https://github.com/PupBrutus"
+  },
+  "license": "MIT",
+  "documentationUrl": "https://github.com/PupBrutus/BrutusTagSystem#readme",
+  "changelogUrl": "https://github.com/PupBrutus/BrutusTagSystem/blob/main/Packages/com.pupbrutus.brutustagsystem/CHANGELOG.md",
+  "vpmDependencies": {
+    "com.vrchat.worlds": "^3.10.5"
+  },
+  "keywords": [
+    "vrchat",
+    "udon",
+    "udonsharp",
+    "tags",
+    "persistence"
+  ]
+}

@@ -79,7 +79,13 @@ Assets/TextMesh Pro.meta
 /Assets/SerializedUdonPrograms
 /Assets/UdonSharp
 *.asset
-ClientSimStorage/PlayerData/PlayerData_1_TagSetupScene.json
-ClientSimStorage/PlayerObjects/PlayerObject_1_TagSetupScene.json
-Assets/BrutusTagSystem/myWorldBpId.txt
-Assets/BrutusTagSystem/myWorldBpId.txt.meta
+# ...except the package's own assets (U# program assets, baked meshes, tag config), which ship in releases
+!/Packages/com.pupbrutus.brutustagsystem/**/*.asset
+# Local test and build output (ClientSim saves, VRWorld Toolkit build reports and settings)
+/ClientSimStorage/
+/Assets/_LastBuild/
+/Assets/_LastBuild.meta
+/Assets/VRWorldToolkit/
+/Assets/VRWorldToolkit.meta
+# A world blueprint id is per uploader
+Packages/com.pupbrutus.brutustagsystem/**/myWorldBpId.txt*
